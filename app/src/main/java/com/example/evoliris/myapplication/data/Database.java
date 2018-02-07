@@ -5,7 +5,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 
-@android.arch.persistence.room.Database(entities = {Message.class}, version = 1)
+@android.arch.persistence.room.Database(entities = {Message.class}, version = 2)
 public abstract class Database extends RoomDatabase {
     private static final String DB_NAME = "Database.db";
     private static Database instance;
@@ -20,7 +20,7 @@ public abstract class Database extends RoomDatabase {
         return Room.databaseBuilder(
                 context,
                 Database.class,
-                DB_NAME).build();
+                DB_NAME).fallbackToDestructiveMigration().build();
     }
     public abstract Dao getDao();
 

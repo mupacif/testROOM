@@ -6,8 +6,12 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class Message {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public int id;
 
     public String message;
+
+    public Message(String message) {
+        this.message = message;
+    }
 }
